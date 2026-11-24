@@ -319,8 +319,21 @@ html.letter .portrait {
   .k, .change .b:last-child, .litany .b:last-child { color: #000; }
 }
 
+.closing {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(4rem, 10svh, 7rem) var(--pad) clamp(2rem, 5svh, 3.5rem);
+}
+.closing::before { content: ""; }
+.sign {
+  font-size: clamp(3.5rem, min(18vw, 27vh), 16.5rem);
+  line-height: 0.84;
+}
 .colophon {
-  padding: 2rem var(--pad) 4.5rem;
+  margin-top: clamp(2rem, 5svh, 4rem);
   text-align: center;
   font-family: "Nimbus Roman", "EB Garamond", Georgia, serif;
   font-size: 0.9rem;
@@ -381,10 +394,10 @@ html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
 
   <section class="closing" aria-label="Think different.">
     <h1 class="sign" id="sign"><span>Think</span> <span>different.</span></h1>
+  <footer class="colophon">designed by joel.</footer>
   </section>
 
 </main>
-<footer class="colophon">designed by joel.</footer>
 
 
 <script>
