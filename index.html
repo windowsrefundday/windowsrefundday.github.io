@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Think different.</title>
+<meta name="description" content="A quiet, scrollable reading of the extended Think Different poem.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:,">
+<link rel="preload" href="fonts/EBGaramond.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/EBGaramond.ttf") format("truetype");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* Letter mode: the face measured off Apple's own "Dear Kate" letter
+   (U+1F4C4) during the pixel-replica work - a Times-class serif.
+   Scoped to html.letter so the default page is untouched. */
+@font-face {
+  font-family: "Nimbus Roman";
+  src: url("fonts/NimbusRoman-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --ink: #ddd3c0;
+  --hi: #fff8e9;
+  --pad: clamp(1.5rem, 8vw, 7.5rem);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #000; }
+body {
+  background: #000;
+  color: var(--ink);
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-weight: 400;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+::selection { background: #ddd3c0; color: #000; }
+[hidden] { display: none !important; }
+/* These are actual blocks in the document, not screens on a fixed stage.
+   Minimum heights give the words space; long passages can grow naturally. */
+.chapter {
+  display: flex;
+  align-items: center;
+  min-height: 75vh;
+  min-height: 75svh;
+  padding: clamp(4rem, 10vh, 9rem) var(--pad);
+  font-size: clamp(1.75rem, 4vw, 4.5rem);
+  line-height: 1.25;
+}
+.chapter p { max-width: 100%; text-wrap: pretty; }
+.b { display: block; }
+.k { color: var(--hi); font-size: 1.1em; font-weight: 500; }
+.kk { font-size: 1.3em; }
+.opening {
+  min-height: 90vh;
+  min-height: 90svh;
+  justify-content: center;
+  font-size: clamp(1.8rem, 3.3vw, 3.25rem);
+}
+.opening p { width: 23ch; text-align: center; }
+.punches { min-height: 90svh; font-size: clamp(2.8rem, 8.3vw, 9rem); line-height: 1.03; letter-spacing: -.045em; }
+.punches p { width: 100%; text-align: left; }
+.punches .b + .b { margin-top: .08em; }
+.outsiders { justify-content: flex-end; font-size: clamp(2rem, 4.7vw, 5rem); }
+.outsiders p { width: 15ch; text-align: right; }
+.outsiders .b + .b { margin-top: .85em; }
+.rules { align-items: flex-end; min-height: 80svh; padding-bottom: 12svh; }
+.rules p { width: 22ch; text-align: left; font-style: italic; }
+.rules .b + .b { margin-top: .45em; }
+.judgment { min-height: 65svh; justify-content: flex-end; align-items: flex-start; font-size: clamp(1.75rem, 3.8vw, 4rem); }
+.judgment p { width: 24ch; text-align: left; }
+.judgment .b:nth-child(2) { padding-left: 1em; }
+.judgment .b:nth-child(3) { padding-left: 2em; }
+.change { min-height: 80svh; justify-content: center; font-size: clamp(1.6rem, 3vw, 3rem); }
+.change p { width: 32ch; text-align: center; }
+.change .b:last-child { margin-top: .8em; font-size: 1.85em; line-height: 1.1; letter-spacing: -.025em; color: var(--hi); }
+.litany { min-height: 100svh; justify-content: center; font-size: clamp(2rem, 4.5vw, 5rem); line-height: 1.15; }
+.litany p { width: 25ch; text-align: center; }
+.litany .b:last-child { margin-top: .8em; color: var(--hi); }
+.genius { min-height: 80svh; justify-content: center; }
+.genius p { width: 25ch; text-align: left; }
+.genius .b:last-child { margin-top: 1em; text-align: right; font-size: 1.3em; }
+.finale { min-height: 100svh; justify-content: center; padding-block: 18svh; font-size: clamp(2.1rem, 4.8vw, 5rem); line-height: 1.14; }
+.finale p { width: 11ch; text-align: left; letter-spacing: -.02em; }
+.finale .k { font-size: 1.04em; }
+/* Only the final type is intentionally cropped, inside its own section.
+   The section still occupies real space and scrolls with everything else. */
+.closing {
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 85svh;
+  padding-block: 12svh;
+}
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-size: clamp(4rem, min(25vw, 40vh), 26rem);
+  font-weight: 400;
+  line-height: .76;
+  letter-spacing: -.065em;
+  text-align: center;
+}
+.sign > span { display: block; width: max-content; white-space: nowrap; }
+.sign > span:first-child { font-size: 1.38em; margin-bottom: .1em; }
+/* Photo mode: one portrait per verse, in flow beside its stanza.
+   Figures are hidden unless ?photos=1, so the text-only page is untouched. */
+.portrait { border: 1px solid #6d675c; padding: 5px; margin: 0; }
+.portrait img { display: block; width: auto; height: auto; }
+html.photos .chapter { gap: clamp(1.5rem, 5vw, 5rem); align-items: center; min-height: 100vh; min-height: 100svh; }
+html.photos .chapter p { width: auto; flex: 1 1 auto; }
+html.photos .chapter .portrait { flex: 0 1 auto; align-self: center; }
+html.photos .chapter .portrait img { max-height: 62svh; max-width: min(34vw, 26rem); }
+html.photos .opening p { max-width: 23ch; }
+html.photos .punches p { max-width: 100%; }
+html.photos .outsiders p { max-width: 15ch; margin-left: auto; }
+html.photos .rules p { max-width: 22ch; }
+html.photos .judgment p { max-width: 24ch; }
+html.photos .change p { max-width: 32ch; }
+html.photos .litany p { max-width: 25ch; }
+html.photos .genius p { max-width: 25ch; }
+html.photos .finale p { max-width: 11ch; }
+html.photos .punches,
+html.photos .rules,
+html.photos .judgment,
+html.photos .genius,
+html.photos .finale { justify-content: space-between; }
+/* Last four verses: alternating sides, dramatically different scales. */
+html.photos .change .portrait { order: -1; }
+html.photos .change .portrait img { max-width: min(44vw, 34rem); max-height: 76svh; }
+html.photos .litany { flex-direction: column; justify-content: center; align-items: center; }
+html.photos .litany .portrait { align-self: center; }
+html.photos .litany .portrait img { height: 40svh; max-width: min(60vw, 24rem); }
+html.photos .litany p { text-align: center; max-width: 25ch; margin-inline: auto; flex: 0 1 auto; }
+html.photos .genius .portrait { order: -1; }
+html.photos .genius .portrait img { max-height: 84svh; max-width: min(30vw, 24rem); }
+html.photos .genius p { text-align: left; }
+html.photos .finale { justify-content: center; }
+html.photos .finale .portrait img { max-height: 62svh; max-width: min(32vw, 25rem); }
+.chapter p, .chapter .b, .chapter .w, .chapter .k, .sign > span { transition: color 180ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .chapter p:hover, .chapter .b:hover, .chapter .w:hover, .sign > span:hover { color: var(--hi); }
+  .chapter p:has(.b):hover, .chapter p:has(.w):hover { color: var(--ink); }
+  .chapter .b:hover .k { color: #fffdf7; }
+}
+@media (max-width: 600px) {
+  .chapter { min-height: 65svh; padding-block: 5rem; }
+  .opening { min-height: 85svh; }
+  .punches { min-height: 75svh; font-size: clamp(2.65rem, 10.4vw, 4rem); }
+  .judgment .b:nth-child(3) { padding-left: 1em; }
+  .litany { min-height: 90svh; }
+  .genius .b:last-child { font-size: 1.12em; }
+  .finale { padding-block: 8rem; }
+  .closing { min-height: 70svh; padding-block: 6rem; }
+  .sign { font-size: 25vw; }
+  html.photos .chapter { flex-direction: column; justify-content: center; gap: 1.5rem; min-height: 0; padding-block: 3rem; }
+  html.photos .chapter .portrait { order: -1; align-self: center; }
+  html.photos .chapter .portrait img { height: 32svh; width: auto; max-width: 82vw; }
+  html.photos .chapter p { width: auto; max-width: 100%; flex: 0 0 auto; }
+  /* Per-verse mobile compositions: one column, never the same twice. */
+  html.photos .opening p { text-align: center; max-width: 23ch; margin-inline: auto; }
+  html.photos .opening .portrait img { height: 24svh; }
+  html.photos .punches { gap: 1.25rem; }
+  html.photos .punches .portrait img { height: 40svh; max-width: 92vw; }
+  html.photos .punches p { text-align: left; max-width: 100%; }
+  html.photos .punches { font-size: clamp(2rem, 8vw, 3rem); }
+  html.photos .outsiders .portrait { order: 1; }
+  html.photos .outsiders .portrait img { height: 28svh; }
+  html.photos .outsiders p { text-align: right; max-width: 15ch; margin-left: auto; }
+  html.photos .rules .portrait { order: 1; align-self: flex-start; }
+  html.photos .rules .portrait img { height: 26svh; }
+  html.photos .rules p { text-align: left; max-width: 22ch; }
+  html.photos .judgment p { text-align: left; max-width: 24ch; }
+  html.photos .judgment .b:nth-child(2) { padding-left: 1em; }
+  html.photos .judgment .b:nth-child(3) { padding-left: 2em; }
+  html.photos .change p { text-align: center; max-width: 32ch; margin-inline: auto; }
+  html.photos .change .portrait { align-self: stretch; }
+  html.photos .change .portrait img { height: auto; width: 100%; max-width: 100%; max-height: none; }
+  html.photos .change { font-size: clamp(1.4rem, 5.6vw, 2rem); }
+  html.photos .change .b:last-child { font-size: 1.4em; }
+  html.photos .litany .portrait img { height: 24svh; }
+  html.photos .litany p { text-align: center; max-width: 25ch; margin-inline: auto; }
+  html.photos .genius .portrait { align-self: center; }
+  html.photos .genius .portrait img { height: 30svh; }
+  html.photos .genius p { text-align: left; max-width: 25ch; margin-inline: 0; }
+  html.photos .genius { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+  html.photos .genius .b:last-child { font-size: 1.15em; }
+  html.photos .finale p { text-align: center; max-width: 12ch; margin-inline: auto; }
+  html.photos .finale .portrait { align-self: center; }
+  html.photos .finale .portrait img { height: 28svh; }
+}
+/* ---- Letter mode (?letter=1) -------------------------------------------
+   Opt-in skin drawn from the pixel measurements of Apple's own "Dear Kate"
+   letter (the sheet emoji U+1F4C4):
+   - poem lines set in Nimbus Roman, the Times-class face the bake-off picked
+   - the "Think different." sign-off and chapter display lines keep EB
+     Garamond, the site's own voice
+   - leading 1.4472, the measured line pitch of the real letter
+   - the paper ramp: grey 212 at the top edge to 233 at the foot, with
+     15-25 levels of darkening at the left and right edges (separable
+     vertical x edge model, measured off the reference)
+   - ink dark, not the emoji's #848484 grey: that value only exists because
+     three-pixel text cannot reach black; at reading size the letter's ink
+     is dark.
+   Everything here is scoped to html.letter, so the default page does not
+   change. The scaleY, blur and per-word offsets from the replica work are
+   deliberately NOT carried over: they are pixel-matching artifacts, not
+   not typography. */
+html.letter {
+  color-scheme: light;
+  --ink: #2b2722;
+  --hi: #090807;
+  --paper-top: #e8e3d9;
+  --paper-mid: #f1ede4;
+  --paper-bot: #f5f2ea;
+}
+html.letter .poem .chapter p,
+html.letter .poem .chapter .b {
+  font-family: "Nimbus Roman", "Times New Roman", Times, serif;
+  line-height: 1.4472;
+}
+html.letter .poem .punches p,
+html.letter .poem .punches .b {
+  line-height: 1.06;
+}
+html.letter .rules p {
+  font-style: normal;          /* Nimbus ships Regular only; avoid faux-italic slant */
+  max-width: 24ch;
+}
+html.letter .rules .b:first-child {
+  font-size: 0.72em;
+  letter-spacing: 0.015em;
+  color: rgba(43, 39, 34, 0.62);
+}
+html.letter .rules .b:last-child {
+  margin-top: 0.65em;
+  font-size: 1.16em;
+  letter-spacing: -0.025em;
+  line-height: 1.14;
+  color: var(--hi);
+}
+html.letter .judgment p {
+  max-width: 22ch;
+}
+html.letter .judgment .b {
+  padding-left: 0;
+  line-height: 1.18;
+}
+html.letter .judgment .b:nth-child(1) {
+  font-size: 0.82em;
+  color: rgba(43, 39, 34, 0.62);
+}
+html.letter .judgment .b:nth-child(2) {
+  margin-top: 0.35em;
+  font-size: 0.96em;
+  text-align: right;
+  color: rgba(43, 39, 34, 0.85);
+}
+html.letter .judgment .b:nth-child(3) {
+  margin-top: 0.45em;
+  font-size: 1.14em;
+  letter-spacing: -0.025em;
+  color: var(--hi);
+}
+html.letter .poem .chapter .k {
+  color: var(--hi);
+  font-weight: 400;            /* Nimbus ships Regular only; no faux-bold */
+}
+html.letter .sign,
+html.letter .closing .sign {
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  color: var(--hi);
+}
+html.letter ::selection { background: #191714; color: #f5f2ea; }
+html.letter, html.letter body {
+  background:
+    linear-gradient(90deg,
+      rgba(20,17,12,.048) 0px, rgba(20,17,12,.042) 6px, rgba(20,17,12,.032) 10px,
+      rgba(20,17,12,.018) 14px, rgba(20,17,12,0) 24px,
+      rgba(20,17,12,0) 84%, rgba(20,17,12,.008) 92%,
+      rgba(20,17,12,.020) 97%, rgba(20,17,12,.012) 100%),
+    linear-gradient(180deg, var(--paper-top) 0%, var(--paper-mid) 45%, var(--paper-bot) 100%);
+}
+html.letter body { color: var(--ink); }
+html.letter .portrait {
+  background: #faf8f3;
+  border: 1px solid rgba(25, 22, 18, 0.14);
+  padding: 8px;
+  box-shadow: 0 22px 44px -26px rgba(18, 15, 10, 0.32);
+}
+@media (hover: hover) and (pointer: fine) {
+  html.letter .chapter p:hover,
+  html.letter .chapter .b:hover,
+  html.letter .chapter .w:hover,
+  html.letter .sign > span:hover { color: var(--hi); }
+  html.letter .chapter p:has(.b):hover,
+  html.letter .chapter p:has(.w):hover { color: var(--ink); }
+  html.letter .chapter .b:hover .k { color: #000000; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter p, .chapter .b, .chapter .w, .chapter .k, .sign > span { transition: none; }
+}
+@media print {
+  html, body { background: #fff; color: #000; }
+  .chapter, .opening, .closing { min-height: 0; padding: 1.5rem; break-inside: avoid; }
+  .chapter, .sign { font-size: 18pt; }
+  .k, .change .b:last-child, .litany .b:last-child { color: #000; }
+}
+</style>
+</head>
+<body>
+
+<main class="poem" id="poem">
+
+  <section class="chapter opening" data-composition="opening">
+    <p>Here’s to the <span class="k">crazy ones</span>.</p>
+    <figure class="portrait" data-portrait="einstein" hidden><img src="assets/campaign/final/einstein.jpg" width="1033" height="1600" alt="Albert Einstein resting his chin on his hand" decoding="async"></figure>
+  </section>
+
+  <section class="chapter punches" data-composition="punches">
+    <p><span class="b">The misfits.</span> <span class="b">The rebels.</span> <span class="b">The troublemakers.</span></p>
+    <figure class="portrait" data-portrait="dylan" hidden><img src="assets/campaign/final/dylan.jpg" width="1600" height="1600" alt="Bob Dylan singing with a harmonica" decoding="async"></figure>
+  </section>
+
+  <section class="chapter outsiders" data-composition="outsiders">
+    <figure class="portrait" data-portrait="earhart" hidden><img src="assets/campaign/final/earhart.jpg" width="1035" height="1600" alt="Amelia Earhart in a leather flight helmet and goggles" decoding="async"></figure>
+    <p><span class="b">The round pegs in the square holes.</span> <span class="b">The ones who see things differently.</span></p>
+  </section>
+
+  <section class="chapter rules" data-composition="rules">
+    <p><span class="b">They’re not fond of rules.</span> <span class="b">And they have no respect for the status quo.</span></p>
+    <figure class="portrait" data-portrait="hitchcock" hidden><img src="assets/campaign/final/hitchcock.jpg" width="1070" height="1600" alt="Alfred Hitchcock beside a stone wall" decoding="async"></figure>
+  </section>
+
+  <section class="chapter judgment" data-composition="judgment">
+    <figure class="portrait" data-portrait="gandhi" hidden><img src="assets/campaign/final/gandhi.jpg" width="1024" height="1600" alt="Mahatma Gandhi reading beside a spinning wheel" decoding="async"></figure>
+    <p><span class="b">You can quote them,</span> <span class="b">disagree with them,</span> <span class="b">glorify or vilify them.</span></p>
+  </section>
+
+  <section class="chapter change" data-composition="change">
+    <p><span class="b">About the only thing you can’t do is ignore them.</span> <span class="b">Because they change things.</span></p>
+    <figure class="portrait" data-portrait="ali" hidden><img src="assets/campaign/final/ali.jpg" width="1600" height="1541" alt="Muhammad Ali throwing a punch toward the camera above a city skyline" decoding="async"></figure>
+  </section>
+
+  <section class="chapter litany" data-composition="litany">
+    <p><span class="b">They invent.</span> <span class="b">They imagine.</span> <span class="b">They heal.</span> <span class="b">They explore.</span> <span class="b">They create.</span> <span class="b">They inspire.</span> <span class="b">They push the human race forward.</span></p>
+    <figure class="portrait" data-portrait="henson" hidden><img src="assets/campaign/final/henson.jpg" width="1039" height="1600" alt="Jim Henson with Kermit the Frog on his shoulder" decoding="async"></figure>
+  </section>
+
+  <section class="chapter genius" data-composition="genius">
+    <p><span class="b">And while some may see them as the <span class="k">crazy ones</span>,</span> <span class="b">we see <span class="k kk">genius</span>.</span></p>
+    <figure class="portrait" data-portrait="picasso" hidden><img src="assets/campaign/final/picasso.jpg" width="1055" height="1589" alt="Pablo Picasso with his hand pressed to his forehead" decoding="async"></figure>
+  </section>
+
+  <section class="chapter finale" data-composition="finale">
+    <p><span class="w">Because</span> <span class="w">the</span> <span class="w">people</span> <span class="w">who</span> <span class="w">are</span> <span class="w">crazy</span> <span class="w">enough</span> <span class="w">to</span> <span class="w">think</span> <span class="w">they</span> <span class="w">can</span> <span class="k"><span class="w">change</span> <span class="w">the</span> <span class="w">world,</span></span> <span class="w">are</span> <span class="w">the</span> <span class="w">ones</span> <span class="w">who</span> <span class="w">do.</span></p>
+    <figure class="portrait" data-portrait="lennon" hidden><img src="assets/campaign/final/lennon.jpg" width="1040" height="1600" alt="John Lennon and Yoko Ono holding flowers during their bed-in" decoding="async"></figure>
+  </section>
+
+  <section class="closing" aria-label="Think different.">
+    <h1 class="sign" id="sign"><span>Think</span> <span>different.</span></h1>
+  </section>
+
+</main>
+
+<script>
+(() => {
+  const q = new URLSearchParams(location.search);
+  const on = q.get('photos') !== '0';
+  document.documentElement.classList.toggle('photos', on);
+  const letter = q.get('letter') !== '0';
+  document.documentElement.classList.toggle('letter', letter);
+  for (const figure of document.querySelectorAll('[data-portrait]')) figure.hidden = !on;
+})();
+</script>
+</body>
+</html>

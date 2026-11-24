@@ -1,0 +1,11 @@
+Nimbus Roman is part of the URW base 35 fonts, redistributed by the gsfonts
+package on Arch Linux.
+
+License: AGPL-3.0-only WITH PS-or-PDF-font-exception-20170817
+
+The full license text is available at:
+  https://www.gnu.org/licenses/agpl-3.0.html
+and the font exception at:
+  https://spdx.org/licenses/PS-or-PDF-font-exception-20170817.html
+
+Review before redistributing this font outside this repository.
