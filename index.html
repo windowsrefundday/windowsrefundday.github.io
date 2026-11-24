@@ -228,8 +228,8 @@ html.letter {
 }
 html.letter .poem .chapter p,
 html.letter .poem .chapter .b {
-  font-family: "Nimbus Roman", "Times New Roman", Times, serif;
-  line-height: 1.4472;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  line-height: 1.28;
 }
 html.letter .poem .punches p,
 html.letter .poem .punches .b {
@@ -276,7 +276,7 @@ html.letter .judgment .b:nth-child(3) {
 }
 html.letter .poem .chapter .k {
   color: var(--hi);
-  font-weight: 400;            /* Nimbus ships Regular only; no faux-bold */
+  font-weight: 500;
 }
 html.letter .sign,
 html.letter .closing .sign {
@@ -330,7 +330,9 @@ html.letter .portrait {
 .closing::before { content: ""; }
 .sign {
   font-size: clamp(3.5rem, min(18vw, 27vh), 16.5rem);
-  line-height: 0.84;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  transform: scaleX(0.9);
 }
 .colophon {
   margin-top: clamp(2rem, 5svh, 4rem);
@@ -398,6 +400,46 @@ html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
 
 .portrait a { display: block; text-decoration: none; cursor: pointer; }
 .colophon .credit { font-weight: 400; opacity: 0.72; }
+
+/* Whole-viewport fade to true black when scrolling into "Think different." */
+html.letter body {
+  position: relative;
+  background: var(--paper-mid);
+  transition: background-color 950ms cubic-bezier(0.22, 1, 0.36, 1), color 950ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.letter {
+  background: var(--paper-mid);
+  transition: background-color 950ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.letter.at-closing,
+html.letter.at-closing body {
+  background: #000000;
+  color: #ddd3c0;
+}
+html.letter .closing .sign,
+html.letter .closing .sign > span {
+  transition: color 950ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.letter.at-closing .closing .sign,
+html.letter.at-closing .closing .sign > span {
+  color: #fff8e9;
+}
+html.letter .closing .colophon {
+  transition: color 950ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.letter.at-closing .closing .colophon {
+  color: rgba(255, 248, 233, 0.68);
+}
+html.letter.at-closing .closing .colophon .credit {
+  color: rgba(255, 248, 233, 0.45);
+}
+html.letter .chapter,
+html.letter .portrait {
+  transition: opacity 700ms ease;
+}
+html.letter.at-closing .chapter {
+  opacity: 0.25;
+}
 </style>
 </head>
 <body>
@@ -465,6 +507,15 @@ html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
   const letter = q.get('letter') !== '0';
   document.documentElement.classList.toggle('letter', letter);
   for (const figure of document.querySelectorAll('[data-portrait]')) figure.hidden = !on;
+
+  const closing = document.querySelector('.closing');
+  if (closing && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      document.documentElement.classList.toggle('at-closing', entries[0].isIntersecting);
+    }, { threshold: 0.38 });
+    io.observe(closing);
+  }
+
 })();
 </script>
 </body>
