@@ -318,6 +318,16 @@ html.letter .portrait {
   .chapter, .sign { font-size: 18pt; }
   .k, .change .b:last-child, .litany .b:last-child { color: #000; }
 }
+
+.colophon {
+  padding: 2rem var(--pad) 4.5rem;
+  text-align: center;
+  font-family: "Nimbus Roman", "EB Garamond", Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: rgba(43, 39, 34, 0.55);
+}
+html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
 </style>
 </head>
 <body>
@@ -374,6 +384,8 @@ html.letter .portrait {
   </section>
 
 </main>
+<footer class="colophon">designed by joel.</footer>
+
 
 <script>
 (() => {
