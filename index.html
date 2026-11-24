@@ -395,6 +395,16 @@ html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
   }
   .sign > span:first-child { font-size: 1.28em; }
 }
+
+.portrait a { display: block; text-decoration: none; cursor: pointer; }
+.portrait { transition: transform 220ms ease, box-shadow 220ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  html.letter .portrait:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 52px -24px rgba(18, 15, 10, 0.42);
+  }
+}
+.colophon .credit { font-weight: 400; opacity: 0.72; }
 </style>
 </head>
 <body>
@@ -403,52 +413,52 @@ html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
 
   <section class="chapter opening" data-composition="opening">
     <p>Here’s to the <span class="k">crazy ones</span>.</p>
-    <figure class="portrait" data-portrait="einstein" hidden><img src="assets/campaign/final/einstein.jpg" width="1033" height="1600" alt="Albert Einstein resting his chin on his hand" decoding="async"></figure>
+    <figure class="portrait" data-portrait="einstein" hidden><a href="https://en.wikipedia.org/wiki/Albert_Einstein" target="_blank" rel="noopener noreferrer" title="Read Albert Einstein’s biography" aria-label="Read Albert Einstein’s biography"><img src="assets/campaign/final/einstein.jpg" width="1033" height="1600" alt="Albert Einstein resting his chin on his hand" decoding="async"></a></figure>
   </section>
 
   <section class="chapter punches" data-composition="punches">
     <p><span class="b">The misfits.</span> <span class="b">The rebels.</span> <span class="b">The troublemakers.</span></p>
-    <figure class="portrait" data-portrait="dylan" hidden><img src="assets/campaign/final/dylan.jpg" width="1600" height="1600" alt="Bob Dylan singing with a harmonica" decoding="async"></figure>
+    <figure class="portrait" data-portrait="dylan" hidden><a href="https://en.wikipedia.org/wiki/Bob_Dylan" target="_blank" rel="noopener noreferrer" title="Read Bob Dylan’s biography" aria-label="Read Bob Dylan’s biography"><img src="assets/campaign/final/dylan.jpg" width="1600" height="1600" alt="Bob Dylan singing with a harmonica" decoding="async"></a></figure>
   </section>
 
   <section class="chapter outsiders" data-composition="outsiders">
-    <figure class="portrait" data-portrait="earhart" hidden><img src="assets/campaign/final/earhart.jpg" width="1035" height="1600" alt="Amelia Earhart in a leather flight helmet and goggles" decoding="async"></figure>
+    <figure class="portrait" data-portrait="earhart" hidden><a href="https://en.wikipedia.org/wiki/Amelia_Earhart" target="_blank" rel="noopener noreferrer" title="Read Amelia Earhart’s biography" aria-label="Read Amelia Earhart’s biography"><img src="assets/campaign/final/earhart.jpg" width="1035" height="1600" alt="Amelia Earhart in a leather flight helmet and goggles" decoding="async"></a></figure>
     <p><span class="b">The round pegs in the square holes.</span> <span class="b">The ones who see things differently.</span></p>
   </section>
 
   <section class="chapter rules" data-composition="rules">
     <p><span class="b">They’re not fond of rules.</span> <span class="b">And they have no respect for the status quo.</span></p>
-    <figure class="portrait" data-portrait="hitchcock" hidden><img src="assets/campaign/final/hitchcock.jpg" width="1070" height="1600" alt="Alfred Hitchcock beside a stone wall" decoding="async"></figure>
+    <figure class="portrait" data-portrait="hitchcock" hidden><a href="https://en.wikipedia.org/wiki/Alfred_Hitchcock" target="_blank" rel="noopener noreferrer" title="Read Alfred Hitchcock’s biography" aria-label="Read Alfred Hitchcock’s biography"><img src="assets/campaign/final/hitchcock.jpg" width="1070" height="1600" alt="Alfred Hitchcock beside a stone wall" decoding="async"></a></figure>
   </section>
 
   <section class="chapter judgment" data-composition="judgment">
-    <figure class="portrait" data-portrait="gandhi" hidden><img src="assets/campaign/final/gandhi.jpg" width="1024" height="1600" alt="Mahatma Gandhi reading beside a spinning wheel" decoding="async"></figure>
+    <figure class="portrait" data-portrait="gandhi" hidden><a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" target="_blank" rel="noopener noreferrer" title="Read Mahatma Gandhi’s biography" aria-label="Read Mahatma Gandhi’s biography"><img src="assets/campaign/final/gandhi.jpg" width="1024" height="1600" alt="Mahatma Gandhi reading beside a spinning wheel" decoding="async"></a></figure>
     <p><span class="b">You can quote them,</span> <span class="b">disagree with them,</span> <span class="b">glorify or vilify them.</span></p>
   </section>
 
   <section class="chapter change" data-composition="change">
     <p><span class="b">About the only thing you can’t do is ignore them.</span> <span class="b">Because they change things.</span></p>
-    <figure class="portrait" data-portrait="ali" hidden><img src="assets/campaign/final/ali.jpg" width="1600" height="1541" alt="Muhammad Ali throwing a punch toward the camera above a city skyline" decoding="async"></figure>
+    <figure class="portrait" data-portrait="ali" hidden><a href="https://en.wikipedia.org/wiki/Muhammad_Ali" target="_blank" rel="noopener noreferrer" title="Read Muhammad Ali’s biography" aria-label="Read Muhammad Ali’s biography"><img src="assets/campaign/final/ali.jpg" width="1600" height="1541" alt="Muhammad Ali throwing a punch toward the camera above a city skyline" decoding="async"></a></figure>
   </section>
 
   <section class="chapter litany" data-composition="litany">
     <p><span class="b">They invent.</span> <span class="b">They imagine.</span> <span class="b">They heal.</span> <span class="b">They explore.</span> <span class="b">They create.</span> <span class="b">They inspire.</span> <span class="b">They push the human race forward.</span></p>
-    <figure class="portrait" data-portrait="henson" hidden><img src="assets/campaign/final/henson.jpg" width="1039" height="1600" alt="Jim Henson with Kermit the Frog on his shoulder" decoding="async"></figure>
+    <figure class="portrait" data-portrait="henson" hidden><a href="https://en.wikipedia.org/wiki/Jim_Henson" target="_blank" rel="noopener noreferrer" title="Read Jim Henson’s biography" aria-label="Read Jim Henson’s biography"><img src="assets/campaign/final/henson.jpg" width="1039" height="1600" alt="Jim Henson with Kermit the Frog on his shoulder" decoding="async"></a></figure>
   </section>
 
   <section class="chapter genius" data-composition="genius">
     <p><span class="b">And while some may see them as the <span class="k">crazy ones</span>,</span> <span class="b">we see <span class="k kk">genius</span>.</span></p>
-    <figure class="portrait" data-portrait="picasso" hidden><img src="assets/campaign/final/picasso.jpg" width="1055" height="1589" alt="Pablo Picasso with his hand pressed to his forehead" decoding="async"></figure>
+    <figure class="portrait" data-portrait="picasso" hidden><a href="https://en.wikipedia.org/wiki/Pablo_Picasso" target="_blank" rel="noopener noreferrer" title="Read Pablo Picasso’s biography" aria-label="Read Pablo Picasso’s biography"><img src="assets/campaign/final/picasso.jpg" width="1055" height="1589" alt="Pablo Picasso with his hand pressed to his forehead" decoding="async"></a></figure>
   </section>
 
   <section class="chapter finale" data-composition="finale">
     <p><span class="w">Because</span> <span class="w">the</span> <span class="w">people</span> <span class="w">who</span> <span class="w">are</span> <span class="w">crazy</span> <span class="w">enough</span> <span class="w">to</span> <span class="w">think</span> <span class="w">they</span> <span class="w">can</span> <span class="k"><span class="w">change</span> <span class="w">the</span> <span class="w">world,</span></span> <span class="w">are</span> <span class="w">the</span> <span class="w">ones</span> <span class="w">who</span> <span class="w">do.</span></p>
-    <figure class="portrait" data-portrait="lennon" hidden><img src="assets/campaign/final/lennon.jpg" width="1040" height="1600" alt="John Lennon and Yoko Ono holding flowers during their bed-in" decoding="async"></figure>
+    <figure class="portrait" data-portrait="lennon" hidden><a href="https://en.wikipedia.org/wiki/John_Lennon" target="_blank" rel="noopener noreferrer" title="Read John Lennon’s biography" aria-label="Read John Lennon’s biography"><img src="assets/campaign/final/lennon.jpg" width="1040" height="1600" alt="John Lennon and Yoko Ono holding flowers during their bed-in" decoding="async"></a></figure>
   </section>
 
   <section class="closing" aria-label="Think different.">
     <h1 class="sign" id="sign"><span>Think</span> <span>different.</span></h1>
-  <footer class="colophon">designed by joel.</footer>
+  <footer class="colophon">designed by joel. <span class="credit">· “Think different.” © Apple Inc.</span></footer>
   </section>
 
 </main>
