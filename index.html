@@ -341,6 +341,59 @@ html.letter .portrait {
   color: rgba(43, 39, 34, 0.55);
 }
 html:not(.letter) .colophon { color: rgba(221, 211, 192, 0.45); }
+
+/* ---- Mobile editorial polish (big, bold, full-screen chapters) ---- */
+@media (max-width: 640px) {
+  :root { --pad: 1.35rem; }
+  html.photos .chapter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.75rem;
+    min-height: 92svh;
+    padding: 4.5rem var(--pad);
+  }
+  html.photos .chapter p {
+    font-size: clamp(2.1rem, 8.8vw, 3.1rem);
+    line-height: 1.18;
+    max-width: 100% !important;
+    width: 100%;
+    margin-inline: 0 !important;
+  }
+  html.photos .chapter .portrait {
+    align-self: center !important;
+    width: fit-content;
+    max-width: 92vw;
+    padding: 6px;
+  }
+  html.photos .chapter .portrait img {
+    height: auto !important;
+    width: auto !important;
+    max-height: 46svh !important;
+    max-width: 86vw !important;
+  }
+  html.photos .opening p { text-align: center; font-size: clamp(2.2rem, 9.2vw, 3.2rem); }
+  html.photos .punches p { font-size: clamp(2.9rem, 12.5vw, 4.4rem) !important; line-height: 1.03 !important; }
+  html.photos .outsiders p { text-align: right; font-size: clamp(2.1rem, 8.8vw, 3.1rem); }
+  html.photos .rules p { text-align: left; }
+  html.photos .rules .b:first-child { font-size: 0.72em; }
+  html.photos .rules .b:last-child { font-size: 1.14em; margin-top: 0.5em; }
+  html.photos .judgment p { text-align: left; }
+  html.photos .change p { text-align: center; font-size: clamp(1.9rem, 7.8vw, 2.7rem); }
+  html.photos .change .b:last-child { font-size: 1.35em; margin-top: 0.55em; }
+  html.photos .litany p { text-align: center; font-size: clamp(2.1rem, 8.6vw, 3rem); }
+  html.photos .genius p { text-align: left; font-size: clamp(2.1rem, 8.8vw, 3.1rem); }
+  html.photos .finale p { text-align: left; font-size: clamp(2.3rem, 9.6vw, 3.4rem); }
+  .closing {
+    min-height: 100svh;
+    padding: 4rem 1rem 2.25rem;
+  }
+  .sign {
+    font-size: clamp(3.8rem, 21vw, 6.5rem) !important;
+    line-height: 0.84 !important;
+  }
+  .sign > span:first-child { font-size: 1.28em; }
+}
 </style>
 </head>
 <body>
